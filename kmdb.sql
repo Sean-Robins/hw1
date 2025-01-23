@@ -108,13 +108,44 @@
 
 -- Turns column mode on but headers off
 .mode column
-.headers off
+.headers on
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
 
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS studios;
+DROP TABLE IF EXISTS actors;
+-- add for combined table names DROP TABLE IF EXISTS sections;
+
 -- Create new tables, according to your domain model
 -- TODO!
+
+-- create movies table for title, release year, and MPAA rating
+
+CREATE TABLE movies (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT,
+  release_yr TEXT,
+  rating TEXT
+);
+
+-- create studios table for name and foreign key to movies
+
+CREATE TABLE studios (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  studio_name TEXT,
+  movies_id INTEGER
+);
+
+-- create actors table for actor name, character name, and foreign key to movie
+
+CREATE TABLE actors (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  actor_name TEXT,
+  character_name TEXT,
+  movies_id TEXT
+);
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
